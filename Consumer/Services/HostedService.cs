@@ -19,10 +19,7 @@ public class HostedService(ICollectionService collectionService, AppSettings app
 
     public void Dispose() => _timer.Dispose();
 
-    public async ValueTask DisposeAsync()
-    {
-        await _timer.DisposeAsync();
-    }
+    public async ValueTask DisposeAsync() => await _timer.DisposeAsync();
 
     private async void Consume(object args)
     {

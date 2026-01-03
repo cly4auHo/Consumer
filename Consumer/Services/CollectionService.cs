@@ -4,8 +4,7 @@ using Consumer.DTO;
 
 namespace Consumer.Services;
 
-public class CollectionService(IServer server, IPriceREPO priceRepo, AppSettings appSettings)
-    : ICollectionService
+public class CollectionService(IServer server, IPriceREPO priceRepo, AppSettings appSettings) : ICollectionService
 {
     public async Task DoRecord()
     {
