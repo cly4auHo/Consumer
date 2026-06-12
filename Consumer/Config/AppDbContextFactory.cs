@@ -1,0 +1,14 @@
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Consumer.Config;
+
+public class AppDbContextFactory : IDbContextFactory<AppDbContext>
+{
+    public AppDbContext CreateDbContext()
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+        optionsBuilder.UseNpgsql("Host=server;Port=5432;Database=Currency;Username=user;Password=password");
+
+        return new AppDbContext(optionsBuilder.Options);
+    }
+}
