@@ -4,5 +4,5 @@
 public class PriceRequestData
 {
     public string Symbol { get; set; }
-    public double Price { get; set; }
+    public string Price { get; set; }
 }

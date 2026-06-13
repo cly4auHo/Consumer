@@ -6,6 +6,8 @@ namespace Consumer.Services;
 public class HostedService(AppSettings appSettings, ICollectionService collectionService) : IHostedService, IDisposable, IAsyncDisposable
 {
     private readonly HttpClient httpClient = new();
+
+    private readonly JsonSerializerOptions options = new() { PropertyNameCaseInsensitive = true };
     private Timer? timer;
     
     public async Task StartAsync(CancellationToken cancellationToken)
@@ -27,7 +29,8 @@ public class HostedService(AppSettings appSettings, ICollectionService collectio
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();
-            var data = JsonSerializer.Deserialize<PriceRequestData>(json);
+            var data = JsonSerializer.Deserialize<PriceRequestData>(json, 
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
             await collectionService.DoRecord(data);
         }

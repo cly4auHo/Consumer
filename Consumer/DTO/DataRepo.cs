@@ -8,7 +8,7 @@ public class DataRepo(AppDbContextFactory dbContextFactory) : IDataRepo
     {
         await using var dbContext = dbContextFactory.CreateDbContext();
 
-        dbContext.Answers.Add(entity);
+        dbContext.Currency.Add(entity);
         
         try
         {

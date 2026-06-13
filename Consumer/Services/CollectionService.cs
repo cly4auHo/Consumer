@@ -1,4 +1,5 @@
-﻿using Consumer.API;
+﻿using System.Globalization;
+using Consumer.API;
 using Consumer.DTO;
 
 namespace Consumer.Services;
@@ -12,8 +13,8 @@ public class CollectionService(IDataRepo dataRepo) : ICollectionService
             var model = new CurrencyEntity
             {
                 Currency = data.Symbol,
-                Price = data.Price,
-                Time = DateTimeOffset.Now
+                Price = double.Parse(data.Price, CultureInfo.InvariantCulture),
+                Time = DateTime.UtcNow
             };
         
             return await dataRepo.DoRecord(model);

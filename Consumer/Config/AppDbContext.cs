@@ -5,5 +5,5 @@ namespace Consumer.Config;
 
 public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
-    public DbSet<CurrencyEntity> Answers { get; set; }
+    public DbSet<CurrencyEntity> Currency { get; set; }
 }
