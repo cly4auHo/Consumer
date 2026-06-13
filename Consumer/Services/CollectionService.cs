@@ -11,8 +11,8 @@ public class CollectionService(IDataRepo dataRepo) : ICollectionService
         {
             var model = new CurrencyEntity
             {
-                Currency = data.symbol,
-                Price = data.price,
+                Currency = data.Symbol,
+                Price = data.Price,
                 Time = DateTimeOffset.Now
             };
         

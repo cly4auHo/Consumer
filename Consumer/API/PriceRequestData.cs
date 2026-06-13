@@ -3,6 +3,6 @@
 [Serializable]
 public class PriceRequestData
 {
-    public string symbol { get; set; }
-    public double price { get; set; }
+    public string Symbol { get; set; }
+    public double Price { get; set; }
 }

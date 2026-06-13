@@ -28,6 +28,8 @@ public class HostedService(AppSettings appSettings, ICollectionService collectio
 
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonSerializer.Deserialize<PriceRequestData>(json);
+
+            await collectionService.DoRecord(data);
         }
     }
     
