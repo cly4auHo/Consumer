@@ -2,12 +2,12 @@
 
 namespace Consumer.Config;
 
-public class AppDbContextFactory : IDbContextFactory<AppDbContext>
+public class AppDbContextFactory(AppSettings appSettings) : IDbContextFactory<AppDbContext>
 {
     public AppDbContext CreateDbContext()
     {
         var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Currency;Username=user;Password=password");
+        optionsBuilder.UseNpgsql(appSettings.ConnectionStrings["DefaultConnection"]);
 
         return new AppDbContext(optionsBuilder.Options);
     }
